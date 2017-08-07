@@ -80,8 +80,8 @@ return htmlTemplate;
 
 
 
-app.get('/', function (req, res) {
-    alert('Hi');
+app.get('/:', function (req, res) {
+   alert('hi');
   res.sendFile(path.join(_dirname,'ui','index.html')) ;
 });
 
