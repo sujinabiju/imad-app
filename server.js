@@ -76,7 +76,7 @@ var htmlTemplate=`
 </html>
 `;
 return htmlTemplate;
-}
+};
 
 
 
