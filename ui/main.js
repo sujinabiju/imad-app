@@ -11,8 +11,9 @@ button.onclick = function () {
          if(request.status === 200){
          var counter =  request.responseText;   
          var span = document.getElementById('count');
-         alert('go');
+         
          span.innerHTML=counter.toString();
+         alert('go');
          }
      }
      
