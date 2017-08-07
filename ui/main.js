@@ -11,6 +11,7 @@ button.onclick = function () {
          if(request.status === 200){
          var counter =  request.responseText;   
          var span = document.getElementById('count');
+         alert('go');
          span.innerHTML=counter.toString();
          }
      }
@@ -19,6 +20,6 @@ button.onclick = function () {
 
      request.open('GET','http://sujinabiju.imad.hasura-app.io/counter',true) ;
      request.send(null);
-     alert('go');
+     
     
 };
