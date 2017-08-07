@@ -7,6 +7,7 @@ var img = document.getElementById('maddy');
 var marginLeft= 0;
 function moveRight()
 {
+    alert('moving');
      marginLeft=marginLeft + 10;
     img.style.marginLeft=marginLeft + 'px';
 }
