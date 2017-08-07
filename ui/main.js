@@ -6,7 +6,7 @@
 
 var button = document.getElementById('counter');
 button.onclick = function(){
-    alert('hi');
+  
     var request = new XMLHttpRequest();
    request.onreadystatechange = function(){
        if (httpRequest.readyState === XMLHttpRequest.DONE){
@@ -20,4 +20,5 @@ button.onclick = function(){
    };
     request.open('GET', 'http://sujinabiju.imad.hasura-app.io/counter', true);
     request.send(null);
+      alert('hi');
 };
