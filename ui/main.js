@@ -19,6 +19,6 @@ button.onclick = function(){
        
    };
     request.open('GET', 'http://sujinabiju.imad.hasura-app.io/counter', true);
-    request.send(null);
+    request.send();
       alert('hi');
 };
