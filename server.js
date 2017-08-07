@@ -81,6 +81,7 @@ return htmlTemplate;
 
 
 app.get('/', function (req, res) {
+    alert('Hi');
   res.sendFile(path.join(_dirname,'ui','index.html')) ;
 });
 
