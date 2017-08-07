@@ -5,6 +5,6 @@ element.innerHTML='New value';
 //move the image
 var img = document.getElementById('maddy');
 img.onclick=function() {
-    alert('jump');
+    
     img.style.marginLeft='100px';
 };
