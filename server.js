@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var pool = require('png').Pool;
+var Pool = require('png').Pool;
 var config = {
     user:'sujinabiju',
     database:'sujinabiju',
