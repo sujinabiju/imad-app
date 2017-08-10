@@ -1,14 +1,14 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-//var pool = require('png').pool;
-/*var config = {
+var pool = require('png').pool;
+var config = {
     user:'sujinabiju',
     database:'sujinabiju',
     host:'db.imad.hasura-app.io',
     port:'5432',
     password:process.env.DB_PASSWORD
-};*/
+};
 var app = express();
 app.use(morgan('combined'));
 
@@ -84,7 +84,16 @@ var htmlTemplate=`
 `;
 return htmlTemplate;
 }
-
+var pool = new pool(config);
+app.get('/test-db',function(req,res){
+   pool.query('SELECT * FROM test',function(err,result){
+       if(err){
+           res.status(500).send(err.toString());
+       }else{
+           res.send(JSON.stringify(result));
+       }
+   }); 
+});
 var names=[];
 app.get('/submit-name',function(req,res){
    var name=req.query.name;
@@ -103,16 +112,7 @@ app.get('/counter',function(req,res){
     res.send(counter.toString());
     
 });
-/*var pool = new pool(config);
-app.get('/test-db',function(req,res){
-   pool.query('SELECT * FROM test',function(err,result){
-       if(err){
-           res.status(500).send(err.toString());
-       }else{
-           res.send(JSON.stringify(result));
-       }
-   }); 
-});*/
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
