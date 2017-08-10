@@ -3,11 +3,11 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool = require('png').Pool;
 var config = {
-    user:'sujinabiju',
-    database:'sujinabiju',
-    host:'db.imad.hasura-app.io',
-    port:'5432',
-    password:process.env.DB_PASSWORD
+    user: 'sujinabiju',
+    database: 'sujinabiju',
+    host: 'db.imad.hasura-app.io',
+    port: '5432',
+    password: process.env.DB_PASSWORD
 };
 var app = express();
 app.use(morgan('combined'));
