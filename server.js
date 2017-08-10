@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var pool = require('png').pool;
+var pool = require('png').Pool;
 var config = {
     user:'sujinabiju',
     database:'sujinabiju',
@@ -84,7 +84,7 @@ var htmlTemplate=`
 `;
 return htmlTemplate;
 }
-var pool = new pool(config);
+var pool = new Pool(config);
 app.get('/test-db',function(req,res){
    pool.query('SELECT * FROM test',function(err,result){
        if(err){
