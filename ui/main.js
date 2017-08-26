@@ -57,14 +57,14 @@ submit.onclick = function(){
            {
             var request = new XMLHttpRequest();
             request.onreadystatechange = function(){
-                if(request.readystate ===XMLHttpRequest.DONE){
-                    if(request.status===200){
+                if(request.readystate === XMLHttpRequest.DONE){
+                    if(request.status === 200){
                         console.log('user logged in');
                         alert('Logged in successfully');
                     }
-                    else if(request.status ===403){
+                    else if(request.status === 403){
                         alert('Username/Password is incorrect');
-                    }else if(request.satus===500){
+                    }else if(request.satus=== 500){
                         alert('Something went wrong on the server');
                     
                     }
