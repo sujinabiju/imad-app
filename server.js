@@ -130,7 +130,7 @@ app.post('/login',function(req,res){
              var dbString= result.rows[0].password;
              var salt = dbString.split('$')[2];
              var hashedPassword = hash(password,salt);
-             if(hashedPassword ===dbString){
+             if(hashedPassword === dbString){
                  req.session.auth ={userId: result.rows[0].id};
                  res.send('credentials are correct');
              }else{
@@ -146,7 +146,7 @@ app.get('/check-login',function(req,res){
         res.send('You are logged in: ' + req.session.auth.userId.toString());
     }
     else{
-        res.send('you are not logged in');
+        res.send('You are not logged in');
     }
 });
 var pool = new Pool(config);
