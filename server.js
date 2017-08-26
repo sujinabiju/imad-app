@@ -17,7 +17,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(session({
     secret:'someRandomSecretValue',
-    cookie : {maxAge: 1000 * 60 * 60 * 24 * 30}
+    cookie : { maxAge: 1000 * 60 * 60 * 24 * 30}
 }));
 
 var articles={
@@ -143,7 +143,7 @@ app.post('/login',function(req,res){
 });
 app.get('/check-login',function(req,res){
     if(req.session && req.session.auth && req.session.auth.uerId){
-        res.send('You are logged in: ' + req.session.auth.userId.tostring());
+        res.send('You are logged in: ' + req.session.auth.userId.toString());
     }
     else{
         res.send('you are not logged in');
