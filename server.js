@@ -116,7 +116,7 @@ app.post('/create-user',function(req,res){
    }) ;
 });
 app.post('/login',function(req,res){
-    /*var username = req.body.username;
+    var username = req.body.username;
     var password = req.body.password;
     pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(err,result){
      if(err){
@@ -132,18 +132,19 @@ app.post('/login',function(req,res){
              var hashedPassword = hash(password,salt);
              if(hashedPassword === dbString){
                  req.session.auth ={userId: result.rows[0].id};
-                 res.send('credentials are correct');
+                // res.send('credentials are correct');
+                 var message = "User successfully created: " + username;
+           var resp = {
+          message : message
+                  };
+              res.send(JSON.stringify(resp));
              }else{
                 res.status(403).send('username/password is invalid');
              }
          }
      }  
-    });*/
-    var message = "User successfully created: " + username;
-var resp = {
-message : message
-};
-res.send(JSON.stringify(resp));
+    });
+   
 //res.send('User successfully created: ' + username);
     
 });
