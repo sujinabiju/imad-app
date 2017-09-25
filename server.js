@@ -157,6 +157,19 @@ app.post('/login',function(req,res){
 //res.send('User successfully created: ' + username);
     
 });
+
+app.get('/get-article',function(req,res){
+    pool.query('SELECT * FROM article',function(err,result){
+        if(err){
+            res.setHeader('Content-Type','application/json');
+            var json = JSON.stringify({error:err.toString()});
+            res.status(500).send(JSON.parse(json));
+        }else{
+            res.send(JSON.stringify(result.rows[0]));
+        }
+        
+    });
+});
 app.get('/check-login',function(req,res){
     if(req.session && req.session.auth && req.session.auth.uerId){
         res.send('You are logged in: ' + req.session.auth.userId.toString());
