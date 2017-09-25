@@ -116,7 +116,7 @@ app.post('/create-user',function(req,res){
    }) ;
 });
 app.post('/login',function(req,res){
-    var username = req.body.username;
+    /*var username = req.body.username;
     var password = req.body.password;
     pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(err,result){
      if(err){
@@ -138,7 +138,13 @@ app.post('/login',function(req,res){
              }
          }
      }  
-    });
+    });*/
+    var message = "User successfully created: " + username;
+var resp = {
+message : message
+};
+res.send(JSON.stringify(resp));
+//res.send('User successfully created: ' + username);
     
 });
 app.get('/check-login',function(req,res){
