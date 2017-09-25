@@ -170,6 +170,8 @@ app.get('/get-article',function(req,res){
         
     });
 });
+
+
 app.get('/check-login',function(req,res){
     if(req.session && req.session.auth && req.session.auth.uerId){
         res.send('You are logged in: ' + req.session.auth.userId.toString());
@@ -218,19 +220,16 @@ app.get('/articles/:articleName',function(req,res){
 
     pool.query("SELECT * FROM article WHERE title= $1" ,[req.params.articleName] , function(err,result){
         if(err){
-           // res.status(500).send(err.toString());
-         // For anddroid app MyBlog
-       res.setHeader('Content-Type', 'application/json');
-       res.status(500).send(JSON.stringify({"error":err.toString()}));
+           res.status(500).send(err.toString());
+         
         }
         else{
         if(result.rows.length === 0){
           res.status(404).send('Article not found') ; 
         }else{
-           //var articleData=result.rows[0];
-          // res.send(createTemplate(articleData));
-          res.setHeader('Content-Type', 'application/json');
-           res.send(JSON.stringify(result.rows));
+           var articleData=result.rows[0];
+           res.send(createTemplate(articleData));
+          
 
         }
         }
