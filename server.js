@@ -165,7 +165,7 @@ app.get('/get-article',function(req,res){
             var json = JSON.stringify({error:err.toString()});
             res.status(500).send(JSON.parse(json));
         }else{
-            res.send(JSON.stringify(result.rows[0]));
+            res.send(JSON.stringify(result.rows));
         }
         
     });
