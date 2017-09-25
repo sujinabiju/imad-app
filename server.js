@@ -125,11 +125,16 @@ app.post('/login',function(req,res){
     var password = req.body.password;
     pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(err,result){
      if(err){
-         res.status(500).send(err.toString());
+         res.setHeader('Content-Type','application/json');
+            var json = JSON.stringify({error:err.toString()});
+            res.status(500).send(JSON.parse(json));
+        // res.status(500).send(err.toString());
      } else{
          if(result.rows.length===0)
          {
-             res.status(403).send('username/password is invalid');
+             res.setHeader('Content-Type','application/json');
+                res.send(JSON.parse('{"error":"invalid username/password"}'));
+            // res.status(403).send('username/password is invalid');
          }
          else{
              var dbString= result.rows[0].password;
@@ -138,13 +143,12 @@ app.post('/login',function(req,res){
              if(hashedPassword === dbString){
                  req.session.auth ={userId: result.rows[0].id};
                 // res.send('credentials are correct');
-                 var message = "User successfully created: " + username;
-           var resp = {
-          message : message
-                  };
-              res.send(JSON.stringify(resp));
+                res.setHeader('Content-Type','application/json');
+                    res.send(JSON.parse('{"message":"you are successfully logged in"}'));
              }else{
-                res.status(403).send('username/password is invalid');
+                //res.status(403).send('username/password is invalid');
+                res.setHeader('Content-Type','application/json');
+                    res.send(JSON.parse('{"message":"you are successfully logged in"}'));
              }
          }
      }  
