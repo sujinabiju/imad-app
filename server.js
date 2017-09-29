@@ -107,14 +107,14 @@ app.post('/create-user',function(req,res){
     var dbString = hash(password,salt);
    pool.query('INSERT INTO "user" (username,password) VALUES ($1,$2)',[username,dbString],function(err,result){
        if(err){
-            res.setHeader('Content-Type','application/json');
-            var json = JSON.stringify({ error:err.toString()});
-            res.status(500).send(JSON.parse(json));
-           //res.status(500).send(err.toString());
+          //  res.setHeader('Content-Type','application/json');
+           // var json = JSON.stringify({ error:err.toString()});
+          //  res.status(500).send(JSON.parse(json));
+           res.status(500).send(err.toString());
        }else{
-           //res.send('user successfully created: ' + username);
-           res.setHeader('Content-Type','application/json');
-            res.send(JSON.parse(`{"message": "User succesfully created: ${username}"}`));
+           res.send('user successfully created: ' + username);
+          // res.setHeader('Content-Type','application/json');
+           // res.send(JSON.parse(`{"message": "User succesfully created: ${username}"}`));
        }
        
        
